@@ -16,6 +16,7 @@ namespace Урок_1
         public Gender Gender { get => gender; set => gender = value; }
         public string? Name { get => firstName; set => firstName = value; }
         public string? LastName { get => lastName; set => lastName = value; }
+
         public FamilyMember? Mother
         {
             get => mother;
@@ -50,8 +51,16 @@ namespace Урок_1
             }
         }
         public List<FamilyMember>? Childrens { get => childrens; }
-        public FamilyMember? Spouce { get => spouce; set => spouce = value; }
-
+        public FamilyMember? Spouce
+        {
+            get => spouce; set
+            {
+                if (this.Spouce != value && value != null)
+                { spouce = value; }
+                else throw new ArgumentException("Такой супруг уже задан, сначала удалите супруга");
+                if (value.Spouce != this) value.Spouce = this;
+            }
+        }
         public FamilyMember()
         {
         }

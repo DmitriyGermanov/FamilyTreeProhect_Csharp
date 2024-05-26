@@ -22,6 +22,7 @@ internal class Program
         {
             son.Father = father;
             son.Mother = mother;
+            father.Spouce = mother;
             father.Father = grandFather;
             father.Mother = grandMother;
             father.SetChild(daughter);
