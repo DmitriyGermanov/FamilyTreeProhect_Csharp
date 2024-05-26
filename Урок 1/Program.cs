@@ -11,18 +11,27 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        FamilyMember son = new(20, Gender.Male, "Vasiliy");
-        FamilyMember mother = new(40, Gender.Female, "Svetlana");
-        FamilyMember father = new(42, Gender.Male, "Alexandr");
-        FamilyMember grandMother = new(82, Gender.Female, "Traktorina");
-        FamilyMember grandFather = new(82, Gender.Male, "Estahii");
+        FamilyMember son = new(20, Gender.Male, "Vasiliy", "Svetlov");
+        FamilyMember daughter = new(18, Gender.Male, "Daria", "Svetlova");
+        FamilyMember mother = new(40, Gender.Female, "Svetlana", "Svetlova");
+        FamilyMember father = new(42, Gender.Male, "Alexandr", "Svetlov");
+        FamilyMember grandMother = new(82, Gender.Female, "Traktorina", "Svetlova");
+        FamilyMember grandFather = new(82, Gender.Male, "Estahii", "Svetlov");
 
-        son.Father = father;
-        son.Mother = mother;
-        father.Father = grandFather;
-        father.Mother = grandMother;
+        try
+        {
+            son.Father = father;
+            son.Mother = mother;
+            father.Father = grandFather;
+            father.Mother = grandMother;
+            father.SetChild(daughter);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
 
-        Console.Write(son);
+        Console.Write(father);
 
         son.GetGrandMothers()?.ForEach(g => { Console.Write(g); });
 
